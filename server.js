@@ -4,6 +4,7 @@ dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 require("dotenv").config();
 
 const Task = require("./models/Task");
@@ -11,6 +12,9 @@ const Task = require("./models/Task");
 const app = express();
 
 const PORT = process.env.PORT || 5000;
+app.use(cors({
+    origin: "http://localhost:5173"
+}));
 
 // Middleware to parse JSON
 app.use(express.json());
